@@ -4,9 +4,13 @@ Proyecto personal de un fantasy creado por Mikel, con una lógica aleatoria en p
 # Tecnologias
 
 · HTML 5
+
 · CSS 3
+
 · JavaScript
+
 · Java
+
 · Spring Boot
 
 # Manual de uso
