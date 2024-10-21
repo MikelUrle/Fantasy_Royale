@@ -19,7 +19,7 @@ Proyecto personal de un fantasy creado por Mikel, con una lógica aleatoria en p
 
 · Descargar Spring Boot (En mi caso recomiendo el eclipse adaptado a este (https://spring.io/tools))
 
-· Crear una base de datos llamada "fantasy_royale" en mi caso utilizo mysql y utilizo MySQL Workbench
+· Ejecutar la sql que esta en el proyecto desde, en mi caso, utilizando MySQL Workbench
 
 · Tendremos que crear un proyecto nuevo, recomendable con java 17, type Maven y con las librerias de "Spring Boot DevTools" / "Spring Data JPA" / MySQL Driver / Thymeleaf / Spring Web
 
@@ -28,4 +28,3 @@ Proyecto personal de un fantasy creado por Mikel, con una lógica aleatoria en p
 · Por ultimo importaremos el proyecto y copiaremos los archivos de su interior con el mismo formato de carpetas que hayamos puesto
 
 · Para tener un ejemplo, el mio seria, dentro de src/main/java estarian los paquetes, con el padre y debajo el de controler / model / repository / service (donde habria que copiar los archivos del proyecto), despues estaria el src/main/resources donde estarian "estatic" para las imagenes y los styles, y templates para los archivos html.
-
