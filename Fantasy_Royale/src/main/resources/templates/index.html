@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/index.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Página Principal Sencilla</title>
+</head>
+<body>
+
+	<!-- Contenedor con los elementos de la pagina -->
+	<div class="container-fluid" style="margin-right: 10%;">
+	<nav>
+		<!-- Botones para ir a las paginas de "Jornada" y "Campo De Futbol" -->
+		<button type="button" class="btn btn-dark navegacion" id="botonJornada">Jornada</button>
+		<button type="button" class="btn btn-dark navegacion" id="botonCampoDeFutbol">Campo De Futbol</button>
+		<!-- Filtros con los dropdowns -->
+		<div style="display: flex;">
+			<!-- Filtro de Equipo -->
+			<div class="dropdown" id="filtroEquipo">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			    Selecciona Equipo
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li th:each="elemento : ${atr_lista_equipos}">
+					<!-- Para quitar el jugador default de la lista -->
+					<div th:if="${elemento.id != 0}">
+						<a class="dropdown-item" th:href="@{/filtroEquipo(idEquipo=${elemento.id})}" th:text="${elemento.nombre}"></a>
+					</div>
+				</li>
+			  </ul>
+			</div>
+			<!-- Filtro de Posicion -->
+			<div class="dropdown" id="filtroPosicion">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+			    Selecciona Posicion
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li th:each="elemento : ${atr_lista_posiciones}">
+					<!--  Para eliminar el equipo default de la lista -->
+					<div th:if="${elemento.id != 0}">
+						<a class="dropdown-item" th:href="@{/filtroPosicion(idPosicion=${elemento.id})}" th:text="${elemento.nombre}"></a>
+					</div>
+				</li>
+			  </ul>
+			</div>
+		</div>
+		</nav>
+		
+	<!-- Tabla para enseñar los jugadores -->
+	<table class="table tablaJugadores">
+	  <thead>
+	    <tr>
+	      <th scope="col">ID</th>
+	      <th scope="col">Nombre</th>
+		  <th scope="col">Foto</th>
+	      <th scope="col">Precio (M€)</th>
+		  <th scope="col">Equipo</th>
+		  <th scope="col">Posicion</th>
+		  <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		
+	    <tr th:each="elemento : ${atr_lista_jugadores}">
+		  <div th:if="${elemento.id != 0}">
+	      <th th:text="${elemento.id}"></th>
+	      <td th:text="${elemento.nombre}"></td>
+		  <td><img th:src="@{'/images/'+${elemento.foto}}" style="height: 60px; width: 60px;" ></td>
+	      <td th:text="${elemento.precio}"></td>
+		  <td th:text="${elemento.equipo.nombre}"></td>
+		  <td th:text="${elemento.posicion.nombre}"></td>
+		  <td>
+		  	<!-- Delantero -->
+			<div th:if="${elemento.posicion.nombre == 'Delantero'}">
+				<!-- Filtro por si ya estan asignados todos los delanteros -->
+				<div th:if="${delanteroNumero < 3}">
+					<!--  Filtro para no asignar el mismo jugador al 11 -->
+					<div th:if="${!listaVariables.contains(elemento.id)}">
+						<button type="button" class="btn btn-dark" th:onclick="'enviarJugador(' + ${elemento.id} +')'">+</button>
+					</div>
+				</div>
+			</div>
+			<!-- Mediocentro -->
+			<div th:if="${elemento.posicion.nombre == 'Mediocentro'}">
+				<!-- Filtro por si ya estan asignados todos los mediocentros -->
+				<div th:if="${mediocentroNumero < 3}">
+					<!--  Filtro para no asignar el mismo jugador al 11 -->
+					<div th:if="${!listaVariables.contains(elemento.id)}">
+						<button type="button" class="btn btn-dark" th:onclick="'enviarJugador(' + ${elemento.id} +')'">+</button>
+					</div>
+				</div>
+			</div>
+			<!-- Defensa -->
+			<div th:if="${elemento.posicion.nombre == 'Defensa'}">
+				<!-- Filtro por si ya estan asignados todos los defensas -->
+				<div th:if="${defensaNumero < 4}">
+					<!--  Filtro para no asignar el mismo jugador al 11 -->
+					<div th:if="${!listaVariables.contains(elemento.id)}">
+						<button type="button" class="btn btn-dark" th:onclick="'enviarJugador(' + ${elemento.id} +')'">+</button>
+					</div>
+				</div>
+			</div>
+			<!-- Portero -->
+			<div th:if="${elemento.posicion.nombre == 'Portero'}">
+				<!-- Filtro por si ya esta asignado el portero  -->
+				<div th:if="${porteroNumero < 1}">
+					<button type="button" class="btn btn-dark" th:onclick="'enviarJugador(' + ${elemento.id} +')'">+</button>
+				</div>
+			</div>
+		  </td>
+		  </div>
+	    </tr>
+		
+	  </tbody>
+	</table>
+	</div>
+	
+	<!-- Formulario para añadir los jugadores al 11 -->
+	<form id="form-jugador-añadir" th:action="@{/agregarAl11Jugador}" method="POST" style="display: none;">
+	    <input type="hidden" name="jugadorId" id="jugadorId">
+	</form>
+	
+	<script>
+	function enviarJugador(jugadorId) {
+		
+		// Asignacion del valor al campo del formulario escondido
+		document.getElementById("jugadorId").value = jugadorId;
+
+		// Enviar el formulario
+		document.getElementById("form-jugador-añadir").submit();
+		
+	}
+	</script>
+	
+	<!-- Boton para ir a la pagina "Jornada" -->
+	<script>
+		const boton1 = document.getElementById('botonJornada');
+
+		boton1.addEventListener('click', () => {
+		    window.location.href = 'jornada';
+		});
+	</script>
+	
+	<!-- Boton para ir a la pagina "Campo de Futbol" -->
+	<script>
+		const boton2 = document.getElementById('botonCampoDeFutbol');
+
+		boton2.addEventListener('click', () => {
+		    window.location.href = 'campo';
+		});
+	</script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

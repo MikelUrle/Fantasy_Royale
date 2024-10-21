@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles/index.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Página Principal Sencilla</title>
+</head>
+<body>
+	
+<!-- Puntos en total -->
+	<h1 th:text="${puntosTotal}" id="puntosTotal"></h1>
+	
+<!-- Contenedor para tener los elementos del campo de futbol -->
+	<div class="container-fluid">
+		<img src="images/CampoDeFutbol.png" class="campoDeFutbol">
+		
+		<!-- Lista de los jugadores del 11 -->
+		<div th:each="especifico : ${atr_lista_posiciones11}">
+			<!--Delantero Centro-->
+			<div th:if="${especifico.id == 1}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 48.7%;
+				bottom: 70%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 48.7%;
+					bottom: 70%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Extremo izquiero-->
+			<div th:if="${especifico.id == 2}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 40%;
+				bottom: 65%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 40%;
+					bottom: 65%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Extremo derecho-->
+			<div th:if="${especifico.id == 3}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 57.5%;
+				bottom: 65%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 57.5%;
+					bottom: 65%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Mediocentro-->
+			<div th:if="${especifico.id == 4}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 48.7%;
+				bottom: 51%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 48.7%;
+					bottom: 51%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Mediocentro izquierdo-->
+			<div th:if="${especifico.id == 5}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 42%;
+				bottom: 51%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 42%;
+					bottom: 51%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Mediocentro derecho-->
+			<div th:if="${especifico.id == 6}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 55.5%;
+				bottom: 51%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 55.5%;
+					bottom: 51%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Defensa Central Izquierdo-->
+			<div th:if="${especifico.id == 7}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 45%;
+				bottom: 32%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 45%;
+					bottom: 32%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Defensa Central Derecho-->
+			<div th:if="${especifico.id == 8}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 52.5%;
+				bottom: 32%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 52.5%;
+					bottom: 32%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Lateral Izquierdo-->
+			<div th:if="${especifico.id == 9}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 39%;
+				bottom: 34%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 39%;
+					bottom: 34%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Lateral Derecho-->
+			<div th:if="${especifico.id == 10}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 58.5%;
+				bottom: 34%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 58.5%;
+					bottom: 34%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+			</div>
+			<!--Portero-->
+			<div th:if="${especifico.id == 11}">
+				<a th:onclick="'eliminarJugador(' + ${especifico.id} + ')'" >
+				<img th:src="@{'/images/' + ${especifico.jugador.foto}}" class="fotoCampo" style="
+				left: 48.7%;
+				bottom: 22%;
+				z-index: 10;
+				max-width: 60px;
+				height: 60px;
+				">
+				</a>
+					<label style="
+					background-color: black;
+					position: fixed;
+					left: 48.7%;
+					bottom: 22%;
+					z-index: 100;
+					color: white;
+					" th:text="${especifico.jugador.puntos}">0</label>
+		</div>
+		</div>
+	
+	</div>
+	
+	<!-- Boton para regresar a la pagina anterior -->
+	<button type="button" class="btn btn-dark navegacion" id="botonVolverIndex"
+	style="
+	position: fixed;
+	margin-left: 60%;
+	
+	height: 8%;
+	width: 8%;
+	"
+	>Volver</button>
+
+	<!-- Formulario escondido para mandar los valores recogidos del front -->
+	<form id="form-jugador-borrar" th:action="@{/quitarDel11}" method="POST" style="display: none;">
+	    <input type="hidden" name="posicionId" id="posicionIdBorrar">
+	</form>
+
+	<script>
+	function eliminarJugador(posicionId) {
+		
+		// Asignar del valor de la id de la posicion al campo del formulario
+		document.getElementById("posicionIdBorrar").value = posicionId;
+
+		// Enviar el formulario
+		document.getElementById("form-jugador-borrar").submit();
+		
+	}
+	</script>
+	
+	<script>
+		// Boton para volver a la pagina anterior
+		const boton = document.getElementById('botonVolverIndex');
+
+		// Al clicar el boton lo que tendra que hacer
+		boton.addEventListener('click', () => {
+		    window.location.href = '/';
+		});
+	</script>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>	
+</body>
+</html>

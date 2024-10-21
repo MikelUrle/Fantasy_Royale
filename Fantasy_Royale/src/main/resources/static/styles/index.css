@@ -1,0 +1,84 @@
+/* Parte generica */
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	background-color: black;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Partes especificas */
+
+.imagenCampo {
+	position: fixed;
+	height: 90vh;
+	width: 35vw;
+	margin-right: 0vw;
+	margin-left: 0vw;
+	margin-top: 0vh;
+	z-index: 10;
+}
+
+.tablaJugadores{
+	margin-left: 10vw;
+	margin-right: 10vw
+}
+
+.fotoCampo{
+	position: fixed;
+}
+
+.navegacion{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+/* Parte de las ID */
+
+#filtroEquipo{
+	margin-left: 64%;
+	margin-bottom: 5%;
+}
+
+#filtroPosicion{
+	margin-left: 10%;
+	margin-bottom: 2%;
+}
+
+#botonJornada{
+	margin-top: 2%;
+	margin-left: 20%;
+}
+
+#botonCampoDeFutbol{
+	margin-top: 2%;
+}
+
+/* Campo de Futbol */
+
+.campoDeFutbol {
+	height: 70vh;
+	width: 30vw;
+	
+	margin-left: 35%;
+	margin-top: 5%;
+}
+
+#puntosTotal{
+	position: fixed; 
+	margin-top: -25%;
+	margin-left: 0.5%;
+	color: white;
+	
+	padding: 0.5%;
+	background-color: black;
+	border-radius: 10px
+}

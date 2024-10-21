@@ -1,0 +1,74 @@
+/* Parte generica */
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f7f7f7;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+/* Parte especifica */
+	
+    .jornada {
+        max-width: 50%;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .partido {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .partido:last-child {
+        border-bottom: none;
+    }
+
+    .equipo {
+        font-size: 18px;
+    }
+
+    .resultado {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    .fecha {
+        text-align: center;
+        color: #555;
+        font-size: 14px;
+        margin-top: 20px;
+    }
+
+    .equipo img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+	
+	.resultado{
+		margin-left: 18.5vw;
+		margin-right: 18.5vw;
+	}
+	
+/* Parte de las ID */ 
+	
+	#generarJornada{
+		margin-left: 35%;
+	}
+	
+	.botonJornada{
+		margin-left: 1%;
+	}
